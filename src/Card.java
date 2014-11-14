@@ -1,25 +1,25 @@
-public class Carte
+public class Card
 {
 	private int number;
 	private int rank;
 	private int color;
-	private int couplenumber;
+	private int coupleNumber;
 
-	public Carte(int S)
+	public Card(int S)
 	{
 		number = S;
 		rank = S/4;
 		color = S%4;
-		couplenumber = setCoupleNumber();
+		coupleNumber = setCoupleNumber();
 	}
-	public Carte(int S, int T)
+	public Card(int S, int T)
 	{
 		number = (S-1)*4+T-1;
 		rank = S-1;
 		color = T-1;
-		couplenumber = setCoupleNumber();
+		coupleNumber = setCoupleNumber();
 	}
-	public Carte()
+	public Card()
 	{
 		number = 1;
 		rank = 0;
@@ -39,7 +39,7 @@ public class Carte
 	}
 	public int getCoupleNumber()
 	{
-		return couplenumber;
+		return coupleNumber;
 	}
 	public String getRankfr()
 	{
@@ -105,21 +105,21 @@ public class Carte
 	{
 		if (color<2)
 		{
-			couplenumber=color*13+rank;  
+			coupleNumber=color*13+rank;  
 		}
 		else if (color==2)
 		{
-			couplenumber=3*13+12-rank; 
+			coupleNumber=3*13+12-rank; 
 		}
 		else if (color==3)
 		{
-			couplenumber=2*13+12-rank; 
+			coupleNumber=2*13+12-rank; 
 		}
-		return couplenumber;
+		return coupleNumber;
 	}
-	public boolean isCouple(Carte two)
+	public boolean isCouple(Card two)
 	{
-		if (this.couplenumber+two.getCoupleNumber()==51) return true;
+		if (this.coupleNumber+two.getCoupleNumber()==51) return true;
 		else return false;
 	}
 }

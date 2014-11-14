@@ -1,18 +1,18 @@
 import java.util.Random;
-public class Hand extends Paquet 
+public class Hand extends Deck 
 {
 	boolean human;
 	String nameCPU;
 	boolean firstplayer;
 
-	public Hand(int S,Paquet pioche,boolean B,Carte removed)
+	public Hand(int S,Deck pioche,boolean B,Card removed)
 	{
 		super(0);
 		human=B;
 
 		String names[]={"Heisenberg","Gustavo Fring","James Bond","Professeur Xavier","Flash","Patrick Jane",
 				"L'homme invisible","La Mouche","God","Anthony LE DREF","Quelqu'un","J'onn J'onzz",
-				"Emma Frost","Jean Grey","Le MaÃ®tre du jeu","Psycho Mantis","Edward Cullen","Alice Cullen",
+				"Emma Frost","Jean Grey","Le Maître du jeu","Psycho Mantis","Edward Cullen","Alice Cullen",
 				"Albert Einstein", "Bruce Wayne","Phoebe Halliwell","Piper Halliwell","Prudence Halliwell","Rikimaru",
 				"the Faceless Void","Solid Snake","Big Boss","Naked Snake","Hiro Nakamura","Doctor Who","Twisted Fate",
 				"Sherlock Holmes","MewTwo","Steve Urkel","Sheldon Cooper"};
@@ -20,7 +20,7 @@ public class Hand extends Paquet
 		Random generator = new Random();
 		int rand = generator.nextInt(names.length);
 		nameCPU=names[rand];
-		Carte newcard;
+		Card newcard;
 		firstplayer=false;
 		for (int i=0;i<S;i++)
 		{
@@ -41,14 +41,10 @@ public class Hand extends Paquet
 	{
 		return firstplayer;
 	}
-	public Carte takeRandomCard(Paquet two)
+	public Card takeRandomCard(Deck two)
 	{
 		Random generator = new Random();
 		int ndrew = generator.nextInt(two.getNumber());
 		return addCardTop(two.drawCard(ndrew));
 	}
 }
-
-
-
-

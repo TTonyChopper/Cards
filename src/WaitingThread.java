@@ -16,9 +16,14 @@ public class WaitingThread extends Thread
 		catch(Exception e)
 		{
 		}
+		int i = 1;
 		while(run)
 		{
-			System.out.print(".");
+			
+			if (i >= 30){
+				System.out.print("\nWaiting");
+				i=0;
+			} else System.out.print(".");
 			try
 			{
 				sleep(1200);
@@ -26,6 +31,7 @@ public class WaitingThread extends Thread
 			catch(Exception e)
 			{
 			}
+			i++;
 		}
 	}
 	public void stopT()

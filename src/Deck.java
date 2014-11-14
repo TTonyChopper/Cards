@@ -1,102 +1,102 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-public class Paquet
+public class Deck
 {
 	int number;
-	ArrayList<Integer> ntaken;
-	ArrayList<Integer> nnottaken;
+	ArrayList<Integer> nTaken;
+	ArrayList<Integer> nNotTaken;
 
-	public Paquet(int S)
+	public Deck(int S)
 	{
 		number = 0;
-		ntaken= new ArrayList<Integer>();
-		nnottaken= new ArrayList<Integer>();
+		nTaken= new ArrayList<Integer>();
+		nNotTaken= new ArrayList<Integer>();
 		for (int i = 0; i < 52; i++)
 		{
-			nnottaken.add(i);
+			nNotTaken.add(i);
 		}
-		Collections.shuffle(nnottaken);
+		Collections.shuffle(nNotTaken);
 		for (int i=0;i<S;i++)
 		{
 			addCardTop();
 		}
 	}
-	public Paquet()
+	public Deck()
 	{
 		number = 52;
-		ntaken= new ArrayList<Integer>();
-		nnottaken= new ArrayList<Integer>();
+		nTaken= new ArrayList<Integer>();
+		nNotTaken= new ArrayList<Integer>();
 		for (int i = 0; i < number; i++)
 		{
-			ntaken.add(i);
+			nTaken.add(i);
 		}
-		Collections.shuffle(ntaken);
+		Collections.shuffle(nTaken);
 	}
 	public ArrayList<Integer> getNtaken()
 	{
-		return ntaken;
+		return nTaken;
 	}
 	public ArrayList<Integer> getNottaken()
 	{
-		return nnottaken;
+		return nNotTaken;
 	}
 	public int getNumber()
 	{
 		return number;
 	}
-	public Carte drawCard()
+	public Card drawCard()
 	{
 		Random generator = new Random();
-		int ndrew = generator.nextInt(ntaken.size());
-		Carte drewcard = new Carte(ntaken.get(ndrew));
+		int ndrew = generator.nextInt(nTaken.size());
+		Card drewcard = new Card(nTaken.get(ndrew));
 		Integer Ndrew = new Integer(ndrew);
-		nnottaken.add(Ndrew);
+		nNotTaken.add(Ndrew);
 		shuffleAntiCards();
-		ntaken.remove(ndrew);
+		nTaken.remove(ndrew);
 		number--;
 		return drewcard;
 	}
-	public Carte drawCard(int position)
+	public Card drawCard(int position)
 	{
-		Carte drewcard = new Carte(ntaken.get(position));
+		Card drewcard = new Card(nTaken.get(position));
 		Integer Ndrew = new Integer(position);
-		nnottaken.add(Ndrew);
+		nNotTaken.add(Ndrew);
 		shuffleAntiCards();
-		ntaken.remove(position);
+		nTaken.remove(position);
 		number--;
 		return drewcard;
 	}
-	public Carte addCardTop()
+	public Card addCardTop()
 	{
-		Carte ToBeAdded = null;   
+		Card ToBeAdded = null;   
 		if (number==52) System.out.println("Impossible d'ajouter une carte");
 		else 
 		{
-			ntaken.add(nnottaken.get(0));
-			int number = (nnottaken.get(0)).intValue();
-			ToBeAdded=new Carte(number);
-			nnottaken.remove(0);
+			nTaken.add(nNotTaken.get(0));
+			int number = (nNotTaken.get(0)).intValue();
+			ToBeAdded=new Card(number);
+			nNotTaken.remove(0);
 		}
 		number++;
 		return ToBeAdded;
 	}
-	public Carte addCardTop(Carte added)
+	public Card addCardTop(Card added)
 	{
 		int cardnumber=added.getNumber();
 		if (number==52) System.out.println("Impossible d'ajouter une carte");
 		else 
 		{
-			if (number==0) ntaken.add(cardnumber);
+			if (number==0) nTaken.add(cardnumber);
 			else
 			{
-				ntaken.add(cardnumber);
+				nTaken.add(cardnumber);
 			}
 			for(int i=0;i<52-number;i++)
 			{	 
-				if ((nnottaken.get(i))==cardnumber)
+				if ((nNotTaken.get(i))==cardnumber)
 				{
-					nnottaken.remove(i);
+					nNotTaken.remove(i);
 					number++;
 					return added;
 				}
@@ -105,40 +105,40 @@ public class Paquet
 		number++;
 		return added;
 	}
-	public Carte addCard()
+	public Card addCard()
 	{
-		Carte ToBeAdded = null;   
+		Card ToBeAdded = null;   
 		if (number==52) System.out.println("Impossible d'ajouter une carte");
 		else 
 		{
 			Random generator = new Random();
-			int nput = generator.nextInt(ntaken.size());
-			ntaken.add(nput,nnottaken.get(0));
-			int number = (nnottaken.get(0)).intValue();
-			ToBeAdded=new Carte(number);
-			nnottaken.remove(0);
+			int nput = generator.nextInt(nTaken.size());
+			nTaken.add(nput,nNotTaken.get(0));
+			int number = (nNotTaken.get(0)).intValue();
+			ToBeAdded=new Card(number);
+			nNotTaken.remove(0);
 		}
 		number++;
 		return ToBeAdded;
 	}
-	public Carte addCard(Carte added)
+	public Card addCard(Card added)
 	{
 		int cardnumber=added.getNumber();
 		if (number==52) System.out.println("Impossible d'ajouter une carte");
 		else 
 		{
 			Random generator = new Random();
-			if (number==0) ntaken.add(cardnumber);
+			if (number==0) nTaken.add(cardnumber);
 			else
 			{
 				int nput = generator.nextInt(number);
-				ntaken.add(nput,cardnumber);
+				nTaken.add(nput,cardnumber);
 			}
 			for(int i=0;i<52-number;i++)
 			{	 
-				if ((nnottaken.get(i))==cardnumber)
+				if ((nNotTaken.get(i))==cardnumber)
 				{
-					nnottaken.remove(i);
+					nNotTaken.remove(i);
 					number++;
 					return added;
 				}
@@ -156,22 +156,22 @@ public class Paquet
 			numberS = i+1;
 			if (numberS<10) zero="0";
 			else zero="";
-			Carte cardinhand = new Carte(ntaken.get(i));
-			System.out.println("Carte n°"+zero+numberS+" : "+cardinhand.getRankfr()+" de "+cardinhand.getColorfr());
+			Card cardinhand = new Card(nTaken.get(i));
+			System.out.println("Card n°"+zero+numberS+" : "+cardinhand.getRankfr()+" de "+cardinhand.getColorfr());
 		}
 	}
 	public void printCardfr(int position)
 	{
-		Carte card = new Carte(ntaken.get(position));
+		Card card = new Card(nTaken.get(position));
 		card.printCardfr();
 	}
 	public void shuffleCards()
 	{
-		Collections.shuffle(ntaken);
+		Collections.shuffle(nTaken);
 	}
 	public void shuffleAntiCards()
 	{
-		Collections.shuffle(nnottaken);
+		Collections.shuffle(nNotTaken);
 	}
 	public int calculateDoubleNumber(int S)
 	{
@@ -194,10 +194,10 @@ public class Paquet
 	}
 	public boolean isCouple(int i, int j)
 	{
-		if (calculateDoubleNumber(ntaken.get(i))+calculateDoubleNumber(ntaken.get(j))==51) return true;
+		if (calculateDoubleNumber(nTaken.get(i))+calculateDoubleNumber(nTaken.get(j))==51) return true;
 		else return false;
 	}
-	public boolean isCouple(Carte one, Carte two)
+	public boolean isCouple(Card one, Card two)
 	{
 		if (one.getCoupleNumber()+two.getCoupleNumber()==51) return true;
 		else return false;
@@ -215,12 +215,12 @@ public class Paquet
 		}
 		return ok;
 	}
-	public Carte lookCard(Paquet two, int cardpos)
+	public Card lookCard(Deck two, int cardpos)
 	{
-		Carte looked = new Carte((two.getNtaken()).get(cardpos));
+		Card looked = new Card((two.getNtaken()).get(cardpos));
 		return looked;
 	}
-	public Carte takeCard(Paquet two, int cardpos)
+	public Card takeCard(Deck two, int cardpos)
 	{
 		return addCardTop(two.drawCard(cardpos));
 	}
