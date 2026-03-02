@@ -1,3 +1,5 @@
+package com.java;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -157,7 +159,7 @@ public class Deck
 			if (numberS<10) zero="0";
 			else zero="";
 			Card cardinhand = new Card(nTaken.get(i));
-			System.out.println("Card n°"+zero+numberS+" : "+cardinhand.getRankfr()+" de "+cardinhand.getColorfr());
+			System.out.println("com.java.Card nï¿½"+zero+numberS+" : "+cardinhand.getRankfr()+" de "+cardinhand.getColorfr());
 		}
 	}
 	public void printCardfr(int position)

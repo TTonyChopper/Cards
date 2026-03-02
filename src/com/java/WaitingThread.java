@@ -1,3 +1,5 @@
+package com.java;
+
 public class WaitingThread extends Thread
 {
 	boolean run;

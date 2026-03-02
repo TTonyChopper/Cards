@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            // Pointing to your custom source directory
+            srcDirs = ['src']
+        }
+    }
+}
+
+application {
+    // Defines the entry point for 'gradle run'
+    mainClass = 'com.main.Main'
+}
+
+dependencies {
+    // Add your libraries here
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+// Remove the 'testing { ... }' block entirely and use this instead:
+tasks.named('test') {
+    // Use the JUnit Platform for unit tests
+    useJUnitPlatform()
+}

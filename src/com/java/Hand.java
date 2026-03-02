@@ -1,3 +1,5 @@
+package com.java;
+
 import java.util.Random;
 public class Hand extends Deck 
 {
@@ -5,14 +7,14 @@ public class Hand extends Deck
 	String nameCPU;
 	boolean firstplayer;
 
-	public Hand(int S,Deck pioche,boolean B,Card removed)
+	public Hand(int S, Deck pioche, boolean B, Card removed)
 	{
 		super(0);
 		human=B;
 
 		String names[]={"Heisenberg","Gustavo Fring","James Bond","Professeur Xavier","Flash","Patrick Jane",
 				"L'homme invisible","La Mouche","God","Anthony LE DREF","Quelqu'un","J'onn J'onzz",
-				"Emma Frost","Jean Grey","Le Maître du jeu","Psycho Mantis","Edward Cullen","Alice Cullen",
+				"Emma Frost","Jean Grey","Le Maï¿½tre du jeu","Psycho Mantis","Edward Cullen","Alice Cullen",
 				"Albert Einstein", "Bruce Wayne","Phoebe Halliwell","Piper Halliwell","Prudence Halliwell","Rikimaru",
 				"the Faceless Void","Solid Snake","Big Boss","Naked Snake","Hiro Nakamura","Doctor Who","Twisted Fate",
 				"Sherlock Holmes","MewTwo","Steve Urkel","Sheldon Cooper"};

@@ -1,3 +1,5 @@
+package com.java;
+
 public class Card
 {
 	private int number;
@@ -80,7 +82,7 @@ public class Card
 	{
 		String colorfr = new String();
 		switch (color) {
-		case 0:  colorfr = "Trèfle";
+		case 0:  colorfr = "Trï¿½fle";
 		break;
 		case 1:  colorfr = "Carreau";
 		break;
